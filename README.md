@@ -2,8 +2,6 @@
 
 ## Git et Github pour votre projet personnel 
 
-
-
 Il existe principalement trois scénarios pour lancer votre environnement de travail.
 
 ### A. La méthode "Local-First" (Nouveau projet sur votre machine)
@@ -114,4 +112,67 @@ Pour qu'un projet soit propre et professionnel, deux éléments sont incontourna
 Le fichier `.gitignore` : Ce fichier liste les éléments que Git doit ignorer (dépendances lourdes comme node_modules/, fichiers de configuration sensibles comme .env, ou fichiers temporaires d'IDE).
 
 Le fichier `README.md` : C'est la vitrine de votre projet. Il doit expliquer ce que fait le projet, comment l'installer et comment l'utiliser.
+
+Le fichier `.gitkeep` dans un dossier permet de mettre un dossier vide sur `github`, car `git` ne suit pas les dossiers vides.
+
+
+## Git et Github pour votre projet d'équipe
+
+Il faut commencer en créant un `fork` du projet d'équipe
+
+Dans votre terminal, utilisez la commande : 
+
+    git clone <VOTRE_FORK>
+
+
+Un dossier est créé, déjà lié à GitHub. Vous n'avez plus qu'à renter dedans
+
+    cd VOTRE_FORK
+
+### Connecter un projet fork à l'`upstream` sur GitHub
+
+Vous avez déjà un lien vers votre `fork` :
+
+    git remote -v
+
+Liez votre dossier local au répertoire (repository) d'équipe et nommez le `upstream` : 
+
+    git remote add upstream <VOTRE_EQUIPE>
+
+
+**Ne travaillez jamais sur la `main`, créez des branches** : 
+
+    git checkout -b MA_BRANCHE
+
+
+Ajoutez vos fichiers à la sauvegarde 
+
+    git add .
+
+
+Sauvegardez en créant le commit : 
+
+     git commit -m”une contribution”
+
+
+Envoyez votre branch sur github (vous n'avez accès qu'à votre `fork`) : 
+
+    git push origin MA_BRANCHE
+
+**Soumettez un `pull request` au(x) chef(s) du projet depuis `github`**
+
+Récupérez le travail du groupe sur la branche `main` :
+
+    # on va sur la branche main
+    git switch main
+    # on récupère le travail de groupe
+    git pull upstream main
+    # on remet son fork à jour
+    git push origin main
+
+Recommencez ensuite les étapes en créant une branche depuis la `main` (sauf pour continuer votre travail qui ne serait pas encore fusionné avec un `merge` par le chef d'équipe)
+    
+
+
+
 
